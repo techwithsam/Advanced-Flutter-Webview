@@ -1,4 +1,8 @@
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
+
+import 'inappwebview.dart';
 
 Future main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -14,6 +18,7 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
+      debugShowCheckedModeBanner: false,
       home: MyHomePage(),
     );
   }
@@ -32,6 +37,39 @@ class _MyHomePageState extends State<MyHomePage> {
     return Scaffold(
       appBar: AppBar(
         title: Text('Advanced Flutter Webview'),
+        centerTitle: true,
+        elevation: 0,
+      ),
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            MaterialButton(
+              onPressed: () {
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => InAppWebview()));
+              },
+              child: Text('InAppWebView'),
+              color: Colors.grey[500],
+            ),
+            MaterialButton(
+              onPressed: () {},
+              child: Text(
+                'InAppBrowser',
+                style: TextStyle(color: Colors.white),
+              ),
+              color: Colors.orange[600],
+            ),
+            MaterialButton(
+              onPressed: () {},
+              child: Text(
+                'ChromeSafari',
+                style: TextStyle(color: Colors.white),
+              ),
+              color: Colors.blue,
+            ),
+          ],
+        ),
       ),
     );
   }
